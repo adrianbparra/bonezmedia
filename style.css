@@ -1,0 +1,106 @@
+body
+{
+	background-color: #a1a1a1;
+}
+
+header
+{
+	text-align: center
+}
+#navlist li
+{
+	display: inline;
+	list-style-type: none;
+	padding: 0;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+#navcontainer ul
+{
+	padding: 18px 18px 0px 18px;
+	text-align: center;
+	height: 40px;
+	background:  #1293EE;
+}
+
+#navlist li a
+{
+	text-decoration: none;
+	padding: 18px 30px 23px 30px;
+	color: black;
+	font-weight: bold;
+}
+
+ul#navlist li a:hover, ul#navlist li.selected a, ul#navlist li.selected a:hover
+{
+	background: #0D66A5;
+}
+	
+#items dt
+{
+	font-weight: bold;
+	margin-left: 20px;
+}
+	
+#tools ul
+{
+	font-weight: bold;
+}
+	
+.content
+{
+	font: normal 120% arial, sans-serif;
+}
+	
+.recontent
+{
+	font: normal 100% arial, sans-seif;
+}
+	
+.tabcontent tr
+{
+	font: normal 120% arial, sans-serif;
+	display:inline;
+	width: 200px;
+}
+	
+#price
+{
+	text-align: center;
+	width: 100%;
+	border-collapse: collapse;
+}
+	
+#price th, #price td
+{
+	border: 2px solid #003399;
+	padding: 6px 6px 6px 6px;
+}
+	
+#price tr.blue
+{
+	background-color: #1293EE;
+}
+	
+.map
+{
+	font: normal 100% arial, sans-seif;
+	text-align: center
+}
+	
+a, a:hover
+{
+	text-decoration: none;
+	color: #003399;
+}
+	
+.footer
+{
+	font: normal 100% 'lucida sans unicode', arial, sans-serif;
+	height: 80px;
+	padding: 20px 1px 20px 1px;
+	text-align: center; 
+	background: #1293EE;
+	color: black;
+}
