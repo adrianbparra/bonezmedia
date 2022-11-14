@@ -2,20 +2,23 @@
 
 [https://bonezmedia.com](https://bonezmedia.com)
 
-#### My installation website created during college while I learned HTML and CSS
+#### Website all about audio, electrial in automotive
 
 #### By: _**[adrianbparra](https://github.com/adrianbparra)**_
 
 ## Technologies Used
 
-* HTML
-* CSS
+* JavaScript
+* React
+* Router
+* Semantic
+* Node.js
+* Express
 
 ## Description
 
-This website was created in 2015 when I was learning HTML and CSS. I look foward to update it more as I have obtained my custom domain and learned new skills. It was never hosted at the time.
+Website for bonez media where you can learn or get audio and electrical modifications for your automotive.
 
-## Known Bugs
 
 
 ## Contact Information
