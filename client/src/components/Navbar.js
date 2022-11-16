@@ -12,7 +12,7 @@ function Navbar() {
         <div className='nav'>
             <div className='nav-header'>
                 <img src={bonezmedialogo} alt="bonezmedialogo" className='logo'/>
-                <div className='nav-name'>
+                <div className='name'>
                     Bonez Media
                 </div>
             </div>
