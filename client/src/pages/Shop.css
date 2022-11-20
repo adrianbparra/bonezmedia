@@ -1,0 +1,13 @@
+:root{
+    --shop-padding: min(2.5vw,2.5rem);
+}
+.new-releases{
+    padding-top: var(--shop-padding);
+    padding-bottom: 3rem;
+}
+
+
+.new-releases .header{
+    padding-bottom: var(--shop-padding);
+    margin: 0;
+}
