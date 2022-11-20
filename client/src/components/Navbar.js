@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu, Label } from 'semantic-ui-react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import bonezmedialogo from "../images/bonezmedialogo.png";
 import "./Navbar.css";
@@ -52,7 +52,7 @@ function Navbar() {
                     name='cart'
                     >
                     Cart
-                    <Label color='orange'>1</Label>
+                    <Label color='orange' floating>1</Label>
                 </Menu.Item>
             </Menu>
         </div>
