@@ -1,14 +1,15 @@
 import React from 'react';
-import { Grid,Divider,Header, Container} from 'semantic-ui-react';
+import { Grid,Divider,Header, Container, Item} from 'semantic-ui-react';
 import FeaturedItem from '../components/FeaturedItem';
+import ItemDefault from '../components/Item.js';
 
 import "./Shop.css"
 
 function Shop() {
     return (
         <div>
-            <Container textAlign='center' className='new-releases'>
-                <Header as='h1'>New Releases</Header>
+            <Container className='new-releases'>
+                <Header textAlign='center' className='new-releases-header' as='h1'>New Releases</Header>
                 
                 <Grid stackable >
                     <Grid.Row columns={3} centered>
@@ -22,10 +23,21 @@ function Shop() {
             
             </Container>
             <Divider/>
+            <Container>
+            <Header textAlign='center' className='new-releases-header' as='h1'>All</Header>
+                <Grid>
+                    <Grid.Row columns={2} as={Item.Group} divided>
+                        <ItemDefault/>
+                        <ItemDefault/>
+                        <ItemDefault/>
+                        <ItemDefault/>
+                        <ItemDefault/>
+                        <ItemDefault/>
 
-            <Grid>
+                    </Grid.Row>
+                </Grid>
 
-            </Grid>
+            </Container>
         </div>
     );
 }
