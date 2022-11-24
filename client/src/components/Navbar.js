@@ -27,6 +27,13 @@ function Navbar() {
                 </Menu.Item>
                 <Menu.Item
                     as={NavLink}
+                    to="shop"
+                    name='shop'
+                    >
+                    Shop
+                </Menu.Item>
+                <Menu.Item
+                    as={NavLink}
                     to="diy"
                     name='diy'
                 >
@@ -38,13 +45,6 @@ function Navbar() {
                     name='installs'
                 >
                     Installs
-                </Menu.Item>
-                <Menu.Item
-                    as={NavLink}
-                    to="shop"
-                    name='shop'
-                    >
-                    Shop
                 </Menu.Item>
                 <Menu.Item
                     as={NavLink}
