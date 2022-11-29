@@ -2,12 +2,13 @@ import React from 'react';
 import { Grid,Divider,Header, Container, Item} from 'semantic-ui-react';
 import FeaturedItem from '../components/FeaturedItem';
 import ItemDefault from '../components/Item.js';
-
 import "./Shop.css"
+
+import { data } from "../data/items";
 
 function Shop() {
     return (
-        <div>
+        <Container className='main'>
             <Container className='new-releases'>
                 <Header textAlign='center' className='new-releases-header' as='h1'>New Releases</Header>
                 
@@ -27,18 +28,13 @@ function Shop() {
             <Header textAlign='center' className='new-releases-header' as='h1'>All</Header>
                 <Grid>
                     <Grid.Row columns={2} as={Item.Group} divided>
-                        <ItemDefault/>
-                        <ItemDefault/>
-                        <ItemDefault/>
-                        <ItemDefault/>
-                        <ItemDefault/>
-                        <ItemDefault/>
+                        {data.map(item => <ItemDefault key={item.id} item={item}/>)}
 
                     </Grid.Row>
                 </Grid>
 
             </Container>
-        </div>
+        </Container>
     );
 }
 
