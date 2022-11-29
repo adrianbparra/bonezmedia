@@ -1,0 +1,10 @@
+.item-price{
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    line-height: normal;
+}
+
+.item-description{
+    margin-top: 2rem;
+}
