@@ -17,7 +17,7 @@ function Navbar() {
                 </div>
             </div>
 
-            <Menu as={"nav"} inverted color='red' size='huge' fluid widths={5}>
+            <Menu as={"nav"} inverted color='red' size='huge' fluid widths={4}>
                 <Menu.Item
                     as={NavLink}
                     to="/"
@@ -31,13 +31,6 @@ function Navbar() {
                     name='shop'
                     >
                     Shop
-                </Menu.Item>
-                <Menu.Item
-                    as={NavLink}
-                    to="diy"
-                    name='diy'
-                >
-                    DIY
                 </Menu.Item>
                 <Menu.Item
                     as={NavLink}
