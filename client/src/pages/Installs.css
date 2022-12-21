@@ -1,0 +1,12 @@
+:root{
+    --install-font-size:clamp(14px, 2vw, 1.5rem)
+}
+.installs-subtitle{
+    font-size: var(--install-font-size);
+}
+
+
+.installs-content{
+    margin-top: 2rem !important;
+    font-size: var(--install-font-size);
+}
