@@ -50,4 +50,22 @@ const data = [
     },
 ]
 
-export { data }
+const cart = [
+    {
+        "id":"1k4k35kn5j132jk342534",
+        "name": "Colorado",
+        "amount": 1,
+        "price":12.00,
+        "dateAdded": new Date("2022-11-21T19:32:00")
+    },
+    {
+        "id":"1k4k3k4563lkj4542534",
+        "name": "Silverado",
+        "amount": 3,
+        "price":12.00,
+        "dateAdded": new Date("2022-11-21T19:32:00")
+
+    },
+]
+
+export { data, cart }
