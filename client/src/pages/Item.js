@@ -16,7 +16,7 @@ function Item() {
         return <Header>Not Found</Header>
     }
     return (
-        <Container className='main'>
+        <Container as={"main"} className='main'>
             <Header as="h1">
                 {item.name}
             </Header>
