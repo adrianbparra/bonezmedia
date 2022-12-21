@@ -2,10 +2,12 @@ import React from 'react';
 import { Segment, Grid, Header,List } from "semantic-ui-react";
 import { NavLink } from 'react-router-dom';
 
+import "./Footer.css";
+
 
 function Footer() {
     return (
-        <Segment padded>
+        <Segment as={"footer"} padded inverted color='red'>
             <Grid relaxed columns={3} stackable>
                 <Grid.Row>
                     <Grid.Column width={4}>

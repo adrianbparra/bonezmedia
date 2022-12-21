@@ -1,0 +1,20 @@
+
+footer .ui.header {
+    color: white;
+}
+
+footer .ui.list > a.item{
+    color: white;
+    
+}
+
+footer .ui.list > a.item:hover{
+    color: white;
+    text-decoration: underline;
+}
+
+
+footer .ui.list >a.item:focus{
+    color: white;
+    text-decoration: underline;
+}
