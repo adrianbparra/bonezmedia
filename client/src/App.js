@@ -10,10 +10,11 @@ import Item from './pages/Item';
 
 import { Container } from 'semantic-ui-react'
 import './App.css';
+import Cart from './pages/Cart';
 
 function App() {
   return (
-    <Container className="main">
+    <Container>
       <Navbar/>
 
       <Routes>
@@ -37,6 +38,11 @@ function App() {
         <Route
           path='/installs'
           element={<Installs/>}
+        />
+
+        <Route
+          path='/cart'
+          element={<Cart/>}
         />
 
       </Routes>
