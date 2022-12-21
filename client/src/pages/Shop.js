@@ -8,7 +8,7 @@ import { data } from "../data/items";
 
 function Shop() {
     return (
-        <Container className='main'>
+        <Container as={"main"} className='main'>
             <Container className='new-releases'>
                 <Header textAlign='center' className='new-releases-header' as='h1'>New Releases</Header>
                 
