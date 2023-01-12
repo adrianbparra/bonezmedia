@@ -4,6 +4,8 @@ import { Button, Container, Divider, Grid, Header, Icon, Item } from 'semantic-u
 
 import ItemDefault from '../components/Item.js';
 
+import "./Cart.css";
+
 import { cart } from '../data/items.js';
 
 function Cart() {
@@ -40,10 +42,12 @@ function Cart() {
                         <Header as={"h2"} textAlign='center'>Your Total</Header>
                         <Divider/>
 
-                        <Container textAlign='left'>
-                        <span>Subtotal</span>
-                        <span>{"$24.00"}</span>
-                        <span>Shipping is calculated as checkout</span>
+                        <Container className='cart-total-container' textAlign='left'>
+                            <div className='cart-subtotal-container'>
+                                <span className='cart-subtotal'>Subtotal:</span>
+                                <span className='cart-price'>{"$24.00"}</span>
+                            </div>
+                            <span className='cart-shipping'>Shipping is calculated at checkout</span>
                         </Container>
 
                         <Button size='big' color='green'>

@@ -1,0 +1,16 @@
+.cart-total-container {
+    font-size: 1em;
+}
+.cart-subtotal-container {
+    margin-bottom: 1rem;
+}
+
+.cart-subtotal-container .cart-price {
+    float: right;
+}
+
+.cart-total-container .cart-shipping {
+    display: block;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
