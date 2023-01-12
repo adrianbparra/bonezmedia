@@ -1,7 +1,9 @@
 import React from 'react';
 import { Grid,Divider,Header, Container, Item} from 'semantic-ui-react';
+
 import FeaturedItem from '../components/FeaturedItem';
 import ItemDefault from '../components/Item.js';
+
 import "./Shop.css"
 
 import { data } from "../data/items";
