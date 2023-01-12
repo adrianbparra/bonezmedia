@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import Shop from './pages/Shop';
 import Installs from './pages/Installs';
 import Item from './pages/Item';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import ContactUs from './pages/ContactUs';
 
 import { Container } from 'semantic-ui-react'
 import './App.css';
@@ -45,6 +47,15 @@ function App() {
           element={<Cart/>}
         />
 
+        <Route
+          path='/privacypolicy'
+          element={<PrivacyPolicy/>}
+        />
+
+        <Route
+          path='/contactus'
+          element={<ContactUs/>}
+        />
       </Routes>
 
       <Footer/>
