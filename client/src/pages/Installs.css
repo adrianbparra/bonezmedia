@@ -4,9 +4,3 @@
 .installs-subtitle{
     font-size: var(--install-font-size);
 }
-
-
-.installs-content{
-    margin-top: 2rem !important;
-    font-size: var(--install-font-size);
-}

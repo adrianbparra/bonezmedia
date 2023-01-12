@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Divider, Grid, Header, Image, Reveal, Segment } from 'semantic-ui-react';
-
+import InstallItem from '../components/InstallItem.js';
 import './Installs.css';
 
 function Installs() {
@@ -18,42 +18,26 @@ function Installs() {
 
             <Divider/>
 
-            <Grid className='installs-content' stackable columns={2}>
+            <Grid stackable columns={2}>
                 
-                <Grid.Row reversed='tablet computer'>
-                    <Grid.Column  width={10}>
-                        <p>
+                <InstallItem reversed>
                             This was an install on a 2007 Chevrolet Colorado.
                             A Kenwood double din headunit was installed with a 
-                            amp and a 8' subwoofer. 
-                        </p>
-                    </Grid.Column>
-                    <Grid.Column width={6}>
-                        <Reveal animated='fade'>
-                            <Reveal.Content visible>
-                                <Image src='https://react.semantic-ui.com/images/wireframe/image.png'/>
-                            </Reveal.Content>
-                            <Reveal.Content hidden>
-                                <Image src='https://react.semantic-ui.com/images/wireframe/image-text.png'/>
-                            </Reveal.Content>
-                        </Reveal>
-                    </Grid.Column>
-                </Grid.Row>
+                            amp and a 8' subwoofer.
+                </InstallItem>
 
                 <Divider/>
-                
-                <Grid.Row>
-                    <Grid.Column width={10}>
-                        <p>
-                            This was an install on a 2007 Chevrolet Colorado.
-                            A Kenwood double din headunit was installed with a 
-                            amp and a 8' subwoofer. 
-                        </p>
-                    </Grid.Column>
-                    <Grid.Column width={6}>
-                        <Image  src='https://react.semantic-ui.com/images/wireframe/image.png'/>
-                    </Grid.Column>
-                </Grid.Row>
+
+                <InstallItem>
+                    This was an install on a 2007 Chevrolet Colorado.
+                    A Kenwood double din headunit was installed with aN amp and a 8' subwoofer. 
+                </InstallItem>
+
+                <Divider/>
+
+                <InstallItem reversed>
+                    This was an install on a 2006 Chevrolet Silverado 1500. It included a Pioneer headunit, Boss Amplifier, and Rockford Fosgate Subwoofers.
+                </InstallItem>
 
             </Grid>
             

@@ -1,0 +1,4 @@
+.install-content {
+    margin-top: 2rem !important;
+    font-size: clamp(14px, 2vw, 1.5rem);
+}
