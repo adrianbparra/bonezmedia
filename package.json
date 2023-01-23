@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/adrianbparra/bonezmedia#readme",
   "dependencies": {
-    "express": "^4.18.2"
-  }
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "stripe": "^11.6.0"
+  },
+  "devDependencies": {}
 }
