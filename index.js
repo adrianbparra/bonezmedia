@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const server = express();
-const port = process.env.PORT;
+const PORT = process.env.PORT;
 
 server.use(cors());
 server.use(express.static("public"));
@@ -20,6 +20,6 @@ server.get("/", (req, res) => {
     res.send("Welcome to Bonez Media API");
 });
 
-server.listen(port, () => {
-    console.log(`Server listening on port ${port}!`);
+server.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}!`);
 });

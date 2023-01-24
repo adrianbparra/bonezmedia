@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const stripe = require("stripe")(process.env.STRIPE_KEY);
-const DOMAIN = process.env.FE_DOMAIN;
+const FE_URL = process.env.FE_URL;
 
 const calculateOrderAmount = (items) => {
     //Calculate orders amount on server
@@ -55,8 +55,8 @@ router.post("/checkout", async (req, res) => {
                 enabled: true,
             },
             mode: "payment",
-            success_url: `${DOMAIN}/success`,
-            cancel_url: `${DOMAIN}/cart`,
+            success_url: `${FE_URL}/success`,
+            cancel_url: `${FE_URL}/cart`,
         });
         console.log(session);
     } catch (error) {
