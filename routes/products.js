@@ -9,6 +9,7 @@ router.get("/all", async (req, res) => {
     try {
         products = await stripe.products.list({
             limit: 20,
+            active: true,
         });
         console.log(products)
     } catch (error) {
