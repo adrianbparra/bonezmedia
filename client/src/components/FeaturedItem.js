@@ -4,20 +4,20 @@ import { Link } from 'react-router-dom';
 
 
 function FeaturedItem(props) {
-    const {id,header,price,description} = props;
+    const {id,name,price,description,images} = props.product;
     return (
-        <Grid.Column>
-            <Card color='red' fluid as={Link} to="/shop/1k334j4563kl">
-                <Image src='https://react.semantic-ui.com/images/wireframe/image.png'/>
+        <Grid.Column >
+            <Card  color='red' fluid as={Link} to={`/shop/${id}`}>
+                <Image src={images[0]}/>
                 <Card.Content>
                     <Card.Header>
-                        Header
+                        {name}
                     </Card.Header>
                     <Card.Meta>
-                        $14.99
+                        $ {price.toFixed(2)}
                     </Card.Meta>
                     <Card.Description>
-                        Description
+                        {description}
                     </Card.Description>
                 </Card.Content>
             </Card>
