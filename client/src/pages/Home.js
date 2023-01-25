@@ -6,6 +6,8 @@ import InstallItem from '../components/InstallItem.js';
 
 import './Home.css';
 
+import { data } from "../data/items";
+
 function Home(props) {
     return (
         <Container as={"main"} className='main'>
@@ -22,11 +24,9 @@ function Home(props) {
                 
                 <Grid stackable className='home-shop-grid' >
                     <Grid.Row columns={3} centered>
-                            <FeaturedItem/>
-                       
-                            <FeaturedItem/>
-                        
-                            <FeaturedItem/>
+                        {data && data.slice(0,3).map(product=>{
+                                return <FeaturedItem key={product.id} product={product}/>
+                            })}
                     </Grid.Row>
                 </Grid>
 
