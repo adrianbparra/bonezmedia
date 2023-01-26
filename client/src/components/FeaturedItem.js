@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 
 
 function FeaturedItem(props) {
-    const {id,name,price,description,images} = props.product;
+    const {id,name,unit_amount,description,images} = props.product;
     return (
         <Grid.Column >
             <Card  color='red' fluid as={Link} to={`/shop/${id}`}>
-                <Image src={images[0]}/>
+                {images.length > 0 && <Image src={images[0]}/>}
                 <Card.Content>
                     <Card.Header>
                         {name}
                     </Card.Header>
                     <Card.Meta>
-                        $ {price.toFixed(2)}
+                        $ {unit_amount.toFixed(2)}
                     </Card.Meta>
                     <Card.Description>
                         {description}
