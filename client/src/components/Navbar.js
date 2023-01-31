@@ -4,9 +4,12 @@ import { NavLink } from 'react-router-dom';
 
 import bonezmedialogo from "../images/bonezmedialogo.png";
 import "./Navbar.css";
+import { useCart } from '../context/cartContext';
 
 
 function Navbar() {
+    const {getTotalItems} = useCart();
+    const cartTotalItems = getTotalItems();
 
     return (
         <div className='nav'>
@@ -45,7 +48,7 @@ function Navbar() {
                     name='cart'
                     >
                     Cart
-                    <Label color='orange' floating>1</Label>
+                    {cartTotalItems > 0 && <Label color='orange' floating>{cartTotalItems}</Label>}
                 </Menu.Item>
             </Menu>
         </div>
