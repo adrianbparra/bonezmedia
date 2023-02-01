@@ -3,20 +3,60 @@ const router = express.Router();
 
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 
-router.get("/all", async (req, res) => {
+const fetchProducts = () => {
+    return stripe.products.list({
+        limit: 100,
+        active: true,
+    });
+};
 
-    let products;
-    try {
-        products = await stripe.products.list({
-            limit: 20,
-            active: true,
-        });
-        console.log(products)
-    } catch (error) {
-        return res.status(400).send(`Products Error:${error}`);
+const fetchPrices = () => {
+    return stripe.prices.list({
+        limit: 100,
+        active: true,
+    });
+};
+
+router.get("/all", async (req, res) => {
+    const response = await Promise.all([fetchProducts(), fetchPrices()]);
+
+    let products = response[0];
+    let prices = response[1];
+
+    let pricesObject = {};
+    let productsArray = [];
+
+    for (let price of prices.data) {
+        pricesObject[price.id] = price;
     }
 
-    res.send(JSON.stringify([ ...products.data ]));
+    productsArray = products.data.map((product) => {
+        let price;
+        if (product.default_price in pricesObject) {
+            price = pricesObject[product.default_price];
+        } else {
+            price = {
+                unit_amount: 0,
+                currency: "usd",
+                tax_behavior: "unspecified",
+                type: "one_time",
+            };
+        }
+
+        return {
+            ...product,
+            unit_amount: price.unit_amount,
+            currency: price.currency,
+            tax_behavior: price.tax_behavior,
+            type: price.type,
+        };
+    });
+
+    return res
+        .status(200)
+        .send(
+            JSON.stringify({ has_more: products.has_more, data: productsArray })
+        );
 });
 
 module.exports = router;
