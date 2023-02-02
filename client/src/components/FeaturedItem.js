@@ -14,7 +14,7 @@ function FeaturedItem(props) {
                         {name}
                     </Card.Header>
                     <Card.Meta>
-                        $ {unit_amount.toFixed(2)}
+                        $ {(unit_amount/100).toFixed(2)}
                     </Card.Meta>
                     <Card.Description>
                         {description}

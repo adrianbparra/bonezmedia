@@ -14,25 +14,25 @@ import ItemDefault from "../components/Item.js";
 
 import "./Shop.css";
 
-import { data } from "../data/items";
+// import { data } from "../data/items";
 
 function Shop() {
-    const isLoading = false;
-    const error = false;
-    // const { isLoading, error, data } = useQuery({
-    //     queryKey: ["products"],
-    //     queryFn: async () => {
-    //         const response = await fetch("http://localhost:4000/products/all", {
-    //             method: "GET",
-    //             headers: { "Content-Type": "application/json" },
-    //         });
-    //         if (!response.ok) {
-    //             throw new Error("Unable to get Products");
-    //         }
-    //         console.log(response);
-    //         return response.json();
-    //     },
-    // });
+    // const isLoading = false;
+    // const error = false;
+    const { isLoading, error, data } = useQuery({
+        queryKey: ["products"],
+        queryFn: async () => {
+            const response = await fetch("http://localhost:4000/products/all", {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            });
+            if (!response.ok) {
+                throw new Error("Unable to get Products");
+            }
+            console.log(response);
+            return response.json();
+        },
+    });
 
     return (
         <Container as={"main"} className="main">
@@ -45,12 +45,12 @@ function Shop() {
                     New Releases
                 </Header>
 
-                <Grid stackable>
-                    <Grid.Row columns={3}>
-                        {/* get first 3 items  stripe already get them in order*/}
-
+                <Grid stackable columns='equal'>
+                    <Grid.Row >
+                        {isLoading && <Loader active inline="centered" />}
+                        {error && <Grid.Column><Header textAlign="center" as="h2">No Items for Sale</Header></Grid.Column>}
                         {data &&
-                            data.slice(0, 3).map((product) => {
+                            data?.data.slice(0, 3).map((product) => {
                                 return (
                                     <FeaturedItem
                                         key={product.id}
@@ -73,9 +73,9 @@ function Shop() {
                 <Grid>
                     <Grid.Row as={Item.Group}>
                         {isLoading && <Loader active inline="centered" />}
-                        {/* <PlaceHolderItem /> */}
+                        {error && <Grid.Column><Header textAlign="center" as="h2">No Items for Sale</Header></Grid.Column>}
                         {data &&
-                            data.map((product) => (
+                            data.data.map((product) => (
                                 <ItemDefault
                                     key={product.id}
                                     product={product}
