@@ -59,4 +59,30 @@ router.get("/all", async (req, res) => {
         );
 });
 
+//Single Item
+router.get("/:id", async (req, res) => {
+    const { id } = req.params;
+    let product;
+    let price;
+
+    try {
+        product = await stripe.products.retrieve(id);
+
+        let priceId = product.default_price;
+        price = await stripe.prices.retrieve(priceId);
+
+        product = {
+            ...product,
+            unit_amount: price.unit_amount,
+            currency: price.currency,
+            tax_behavior: price.tax_behavior,
+            type: price.type,
+        };
+    } catch (error) {
+        res.status(400).send({ error: "Product does not exist!" });
+    }
+
+    res.status(200).send(JSON.stringify(product));
+});
+
 module.exports = router;
