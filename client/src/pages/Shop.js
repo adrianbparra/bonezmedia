@@ -29,7 +29,6 @@ function Shop() {
             if (!response.ok) {
                 throw new Error("Unable to get Products");
             }
-            console.log(response);
             return response.json();
         },
     });
@@ -45,10 +44,16 @@ function Shop() {
                     New Releases
                 </Header>
 
-                <Grid stackable columns='equal'>
-                    <Grid.Row >
+                <Grid stackable columns="equal">
+                    <Grid.Row>
                         {isLoading && <Loader active inline="centered" />}
-                        {error && <Grid.Column><Header textAlign="center" as="h2">No Items for Sale</Header></Grid.Column>}
+                        {error && (
+                            <Grid.Column>
+                                <Header textAlign="center" as="h2">
+                                    No Items for Sale
+                                </Header>
+                            </Grid.Column>
+                        )}
                         {data &&
                             data?.data.slice(0, 3).map((product) => {
                                 return (
@@ -73,7 +78,13 @@ function Shop() {
                 <Grid>
                     <Grid.Row as={Item.Group}>
                         {isLoading && <Loader active inline="centered" />}
-                        {error && <Grid.Column><Header textAlign="center" as="h2">No Items for Sale</Header></Grid.Column>}
+                        {error && (
+                            <Grid.Column>
+                                <Header textAlign="center" as="h2">
+                                    No Items for Sale
+                                </Header>
+                            </Grid.Column>
+                        )}
                         {data &&
                             data.data.map((product) => (
                                 <ItemDefault
