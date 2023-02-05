@@ -59,7 +59,6 @@ router.get("/all", async (req, res) => {
         );
 });
 
-//Single Item
 router.get("/:id", async (req, res) => {
     const { id } = req.params;
     let product;
@@ -79,7 +78,9 @@ router.get("/:id", async (req, res) => {
             type: price.type,
         };
     } catch (error) {
-        res.status(400).send({ error: "Product does not exist!" });
+        res.status(404).send(
+            JSON.stringify({ message: "Product does not exist!" })
+        );
     }
 
     res.status(200).send(JSON.stringify(product));
