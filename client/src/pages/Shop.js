@@ -9,16 +9,10 @@ import {
 } from "semantic-ui-react";
 import { useQuery } from "@tanstack/react-query";
 
-import FeaturedItem from "../components/FeaturedItem";
+import FeaturedContainer from "../components/FeaturedContainer";
 import ItemDefault from "../components/Item.js";
 
-import "./Shop.css";
-
-// import { data } from "../data/items";
-
 function Shop() {
-    // const isLoading = false;
-    // const error = false;
     const { isLoading, error, data } = useQuery({
         queryKey: ["products"],
         queryFn: async () => {
@@ -27,45 +21,18 @@ function Shop() {
                 headers: { "Content-Type": "application/json" },
             });
             if (!response.ok) {
-                throw new Error("Unable to get Products");
+                const error = await response.json();
+
+                throw new Error(error.statusText);
             }
-            return response.json();
+            const data = await response.json();
+            return data;
         },
     });
 
     return (
         <Container as={"main"} className="main">
-            <Container className="new-releases">
-                <Header
-                    textAlign="center"
-                    className="new-releases-header"
-                    as="h1"
-                >
-                    New Releases
-                </Header>
-
-                <Grid stackable columns="equal">
-                    <Grid.Row>
-                        {isLoading && <Loader active inline="centered" />}
-                        {error && (
-                            <Grid.Column>
-                                <Header textAlign="center" as="h2">
-                                    No Items for Sale
-                                </Header>
-                            </Grid.Column>
-                        )}
-                        {data &&
-                            data?.data.slice(0, 3).map((product) => {
-                                return (
-                                    <FeaturedItem
-                                        key={product.id}
-                                        product={product}
-                                    />
-                                );
-                            })}
-                    </Grid.Row>
-                </Grid>
-            </Container>
+            <FeaturedContainer/>
             <Divider />
             <Container>
                 <Header

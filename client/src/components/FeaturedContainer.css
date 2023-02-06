@@ -1,6 +1,7 @@
 :root{
     --shop-padding: min(2.5vw,2.5rem);
 }
+
 .new-releases{
     padding-bottom: 3rem;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import {
@@ -9,15 +9,12 @@ import {
     Header,
     Icon,
     Item,
-    Segment,
 } from "semantic-ui-react";
 
 import { useCart } from "../context/cartContext";
 import ItemDefault from "../components/Item.js";
-import FeaturedItem from "../components/FeaturedItem";
+import FeaturedContainer from "../components/FeaturedContainer";
 import "./Cart.css";
-
-import { data } from "../data/items.js";
 
 function Cart() {
     let [searchParams, setSearchParams] = useSearchParams();
@@ -124,7 +121,7 @@ function Cart() {
                                         Subtotal:
                                     </span>
                                     <span className="cart-price">
-                                        $ {(totalPrice/100).toFixed(2)}
+                                        $ {(totalPrice / 100).toFixed(2)}
                                     </span>
                                 </div>
                                 <span className="cart-shipping">
@@ -141,25 +138,7 @@ function Cart() {
                 </Grid>
             )}
             <Divider />
-            <Container>
-                <Header textAlign="center" as="h1">
-                    New Releases
-                </Header>
-
-                <Grid stackable>
-                    <Grid.Row columns={3}>
-                        {data &&
-                            data.slice(0, 3).map((product) => {
-                                return (
-                                    <FeaturedItem
-                                        key={product.id}
-                                        product={product}
-                                    />
-                                );
-                            })}
-                    </Grid.Row>
-                </Grid>
-            </Container>
+            <FeaturedContainer />
         </Container>
     );
 }
