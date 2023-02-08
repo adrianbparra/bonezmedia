@@ -1,4 +1,6 @@
-
+footer {
+    margin-bottom: 2rem;
+}
 footer .ui.header {
     color: white;
 }

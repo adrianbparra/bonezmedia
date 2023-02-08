@@ -22,7 +22,7 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <CartProvider>
-                <Container>
+                <Container className="app">
                     <Navbar />
 
                     <Routes>

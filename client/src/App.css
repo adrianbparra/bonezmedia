@@ -1,6 +1,9 @@
 :root{
   --main-padding: min(2.5vw,2.5rem);
 }
+.app{
+  padding-bottom: 2rem;
+}
 .main{
   padding-top: var(--main-padding);
   padding-bottom: 3rem;
