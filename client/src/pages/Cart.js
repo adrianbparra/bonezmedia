@@ -9,6 +9,7 @@ import {
     Header,
     Icon,
     Item,
+    Message,
 } from "semantic-ui-react";
 
 import { useCart } from "../context/cartContext";
@@ -22,49 +23,41 @@ function Cart() {
     const cartTotalItems = getTotalItems();
     const totalPrice = getTotalPrice();
 
-    const checkout = async () => {
-        await fetch("http://localhost:4000/payments/checkout", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                items: [
-                    {
-                        price: "price_1MSAmLFFFIEXyroZnLUThJdQ",
-                        quantity: 1,
-                    },
-                ],
-            }),
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                console.log(res);
-                if (res.url) {
-                    window.location.assign(res.url);
-                }
-            });
+    const checkout = () => {
+        mutate(cartItems);
     };
-    // const { isLoading, error, data } = useMutation({
-    //     queryKey: ["clientSecret"],
-    //     queryFn: () =>
-    //         fetch("http://localhost:4000/payments/checkout", {
-    //             method: "POST",
-    //             headers: { "Content-Type": "application/json" },
-    //             body: JSON.stringify({
-    //                 items: [
-    //                     {
-    //                         price: "price_1MSAmLFFFIEXyroZnLUThJdQ",
-    //                         quantity: 2,
-    //                     },
-    //                 ],
-    //             }),
-    //         })
-    //             .then((res) => res.json())
-    //             .then((res) => {
-    //                 if (res.url) {
-    //                     window.location.assign(res.url);
-    //                 }
-    //             }),
-    // });
+
+    const { isLoading, error, isError, mutate } = useMutation({
+        mutationFn: async (items) => {
+            const response = await fetch(
+                "http://localhost:4000/payments/checkout",
+                {
+                    method: "POST",
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                    body: JSON.stringify(items),
+                }
+            );
+
+            console.log("response:", response);
+
+            if (!response.ok) {
+                const error = await response.json();
+                console.log("error:", error);
+                throw new Error("Unable to Checkout");
+            }
+            const data = await response.json();
+            console.log("mutate", data);
+            return data.url;
+        },
+        onSuccess: (data) => {
+            console.log("success", data);
+            window.location.assign(data);
+        },
+    });
 
     return (
         <Container as={"main"} className="main">
@@ -129,10 +122,21 @@ function Cart() {
                                 </span>
                             </Container>
 
-                            <Button size="big" color="green" onClick={checkout}>
+                            <Button
+                                size="big"
+                                color="green"
+                                loading={isLoading}
+                                onClick={checkout}
+                                disabled={isError}
+                            >
                                 <Icon name="lock" />
                                 Secured Checkout
                             </Button>
+                            <Message
+                                error={isError}
+                                content={error?.message}
+                                hidden={!isError}
+                            />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

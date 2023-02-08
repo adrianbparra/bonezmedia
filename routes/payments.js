@@ -11,7 +11,7 @@ const calculateOrderAmount = (items) => {
     return 1400;
 };
 
-router.post("/create-payment-intent", async (req, res) => {
+router.post("/payment", async (req, res) => {
     const { items } = req.body;
 
     // Create PaymentIntent with the order amoiunt and currency
@@ -30,10 +30,20 @@ router.post("/create-payment-intent", async (req, res) => {
 
 //Checkout Post
 router.post("/checkout", async (req, res) => {
-    const lineItems = req.body.items;
+    let items = req.body;
     let session;
-
     try {
+        console.log("req", req.body);
+
+        if (!items) {
+            return res.status(400).json({ message: "Unable to Checkout" });
+        }
+        // items = JSON.parse(items);
+
+        items = items.map((item) => {
+            return { price: item.default_price, quantity: item.quantity };
+        });
+        console.log("items", items);
         session = await stripe.checkout.sessions.create({
             shipping_address_collection: { allowed_countries: ["US", "CA"] },
             shipping_options: [
@@ -50,7 +60,7 @@ router.post("/checkout", async (req, res) => {
                     },
                 },
             ],
-            line_items: lineItems,
+            line_items: items,
             automatic_tax: {
                 enabled: true,
             },
@@ -58,13 +68,13 @@ router.post("/checkout", async (req, res) => {
             success_url: `${FE_URL}/success`,
             cancel_url: `${FE_URL}/cart`,
         });
-        console.log(session);
+        console.log("session", session);
     } catch (error) {
-        console.log(error);
-        return res.status(400).send(`Checkout Error: ${error.message}`);
+        console.log("error", error);
+        return res.status(400).json({ message: error.message });
     }
 
-    return res.send(JSON.stringify({ url: session.url }));
+    return res.status(200).json({ url: session.url });
 });
 
 module.exports = router;

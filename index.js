@@ -13,8 +13,8 @@ server.use(express.json());
 const paymentRoute = require("./routes/payments.js");
 const productsRoute = require("./routes/products.js");
 
-server.use("/payments/", paymentRoute);
-server.use("/products/", productsRoute);
+server.use("/payments", paymentRoute);
+server.use("/products", productsRoute);
 
 server.get("/", (req, res) => {
     res.send("Welcome to Bonez Media API");
