@@ -20,19 +20,22 @@ export function CartProvider({ children }) {
         if (cartItems.length > 0) {
             window.localStorage.setItem("cart", JSON.stringify(cartItems));
         }
+        if (cartItems.length === 0) {
+            window.localStorage.removeItem("cart")
+        }
     }, [cartItems]);
 
     function getItemQuantity(price_id) {
         return (
-            cartItems.find((product) => product.price === price_id)?.quantity ||
-            0
+            cartItems.find((product) => product.default_price === price_id)
+                ?.quantity || 0
         );
     }
 
     function updateCartQuantity(price_id, quantity) {
         setCartItems((currItems) => {
             return currItems.map((item) => {
-                if (item.price === price_id) {
+                if (item.default_price === price_id) {
                     return {
                         ...item,
                         quantity: quantity,
@@ -47,12 +50,14 @@ export function CartProvider({ children }) {
     function incrAmountCartQuantity(product, quantity) {
         setCartItems((currItems) => {
             if (
-                currItems.find((items) => items.price === product.price) == null
+                currItems.find(
+                    (items) => items.default_price === product.default_price
+                ) == null
             ) {
                 return [...currItems, { ...product, quantity: 1 }];
             } else {
                 return currItems.map((item) => {
-                    if (item.price === product.price) {
+                    if (item.default_price === product.default_price) {
                         return {
                             ...item,
                             quantity: item.quantity + quantity,
@@ -67,12 +72,14 @@ export function CartProvider({ children }) {
     function increaseCartQuantity(product) {
         setCartItems((currItems) => {
             if (
-                currItems.find((item) => item.price === product.price) == null
+                currItems.find(
+                    (item) => item.default_price === product.default_price
+                ) == null
             ) {
                 return [...currItems, { ...product, quantity: 1 }];
             } else {
                 return currItems.map((item) => {
-                    if (item.price === product.price) {
+                    if (item.default_price === product.default_price) {
                         return { ...item, quantity: item.quantity + 1 };
                     } else {
                         return item;
@@ -103,7 +110,7 @@ export function CartProvider({ children }) {
 
     function removeFromCart(price_id) {
         setCartItems((currItems) => {
-            return currItems.filter((item) => item.price !== price_id);
+            return currItems.filter((item) => item.default_price !== price_id);
         });
     }
 

@@ -13,12 +13,12 @@ function ItemDefault(props) {
         updateCartQuantity,
         getItemQuantity,
     } = useCart();
-    const { id, name, unit_amount, price, description, images } = props.product;
+    const { id, name, unit_amount, default_price, description, images } = props.product;
 
-    let quantity = getItemQuantity(price);
+    let quantity = getItemQuantity(default_price);
 
     function handleChange(e, { value }) {
-        updateCartQuantity(price, value);
+        updateCartQuantity(default_price, value);
     }
 
     return (
@@ -69,7 +69,7 @@ function ItemDefault(props) {
                         <Button
                             color="red"
                             floated="right"
-                            onClick={() => removeFromCart(price)}
+                            onClick={() => removeFromCart(default_price)}
                         >
                             <Icon name="x" />
                             Remove
