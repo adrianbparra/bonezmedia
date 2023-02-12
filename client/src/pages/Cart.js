@@ -36,7 +36,6 @@ function Cart() {
                     mode: "cors",
                     headers: {
                         "Content-Type": "application/json",
-                        Accept: "application/json",
                     },
                     body: JSON.stringify(items),
                 }
@@ -127,7 +126,6 @@ function Cart() {
                                 color="green"
                                 loading={isLoading}
                                 onClick={checkout}
-                                disabled={isError}
                             >
                                 <Icon name="lock" />
                                 Secured Checkout

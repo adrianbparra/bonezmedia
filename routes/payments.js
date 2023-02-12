@@ -36,7 +36,7 @@ router.post("/checkout", async (req, res) => {
         console.log("req", req.body);
 
         if (!items) {
-            return res.status(400).json({ message: "Unable to Checkout" });
+            return res.status(400).json({ message: "No Items to Checkout" });
         }
         // items = JSON.parse(items);
 

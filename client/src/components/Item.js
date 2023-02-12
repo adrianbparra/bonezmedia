@@ -13,7 +13,8 @@ function ItemDefault(props) {
         updateCartQuantity,
         getItemQuantity,
     } = useCart();
-    const { id, name, unit_amount, default_price, description, images } = props.product;
+    const { id, name, unit_amount, default_price, description, images } =
+        props.product;
 
     let quantity = getItemQuantity(default_price);
 
@@ -34,24 +35,28 @@ function ItemDefault(props) {
                     <Item.Description>{description}</Item.Description>
                 )}
                 {pathname === "/cart" && (
-                    <Dropdown
-                        onChange={handleChange}
-                        compact
-                        selection
-                        options={[
-                            { key: 1, text: "1", value: 1 },
-                            { key: 2, text: "2", value: 2 },
-                            { key: 3, text: "3", value: 3 },
-                            { key: 4, text: "4", value: 4 },
-                            { key: 5, text: "5", value: 5 },
-                            { key: 6, text: "6", value: 6 },
-                            { key: 7, text: "7", value: 7 },
-                            { key: 8, text: "8", value: 8 },
-                            { key: 9, text: "9", value: 9 },
-                            { key: 10, text: "10", value: 10 },
-                        ]}
-                        value={quantity}
-                    />
+                    <span>
+                        Quantity {" "}
+                        <Dropdown
+                            onChange={handleChange}
+                            selection
+                            scrolling
+                            compact
+                            options={[
+                                { key: 1, text: "1", value: 1 },
+                                { key: 2, text: "2", value: 2 },
+                                { key: 3, text: "3", value: 3 },
+                                { key: 4, text: "4", value: 4 },
+                                { key: 5, text: "5", value: 5 },
+                                { key: 6, text: "6", value: 6 },
+                                { key: 7, text: "7", value: 7 },
+                                { key: 8, text: "8", value: 8 },
+                                { key: 9, text: "9", value: 9 },
+                                { key: 10, text: "10", value: 10 },
+                            ]}
+                            value={quantity}
+                        />
+                    </span>
                 )}
                 <Item.Extra>
                     {pathname === "/shop" && (

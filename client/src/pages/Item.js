@@ -19,10 +19,9 @@ import "./Item.css";
 
 function Item() {
     const [quantity, setQuantity] = useState(1);
-    // const [imageI, setImageI] = useState(0);
     const { id } = useParams();
 
-    const { isLoading, data, error } = useQuery({
+    const { isLoading, data, error, isError, isSuccess } = useQuery({
         queryKey: ["products", id],
         queryFn: async () => {
             const response = await fetch(
@@ -49,7 +48,7 @@ function Item() {
 
     return (
         <Container as={"main"} className="main">
-            {error && (
+            {isError && (
                 <>
                     <Header as="h1" textAlign="center">
                         Huh!
@@ -58,7 +57,7 @@ function Item() {
                 </>
             )}
             {isLoading && <Loader active size="massive" inline="centered" />}
-            {data && (
+            {isSuccess && (
                 <>
                     <Header as="h1">{data.name}</Header>
 
