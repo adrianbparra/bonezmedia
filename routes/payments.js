@@ -65,7 +65,7 @@ router.post("/checkout", async (req, res) => {
                 enabled: true,
             },
             mode: "payment",
-            success_url: `${FE_URL}/success`,
+            success_url: `${FE_URL}/order/{CHECKOUT_SESSION_ID}`,
             cancel_url: `${FE_URL}/cart`,
         });
         console.log("session", session);

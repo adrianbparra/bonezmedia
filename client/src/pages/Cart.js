@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import {
     Button,
@@ -18,7 +18,6 @@ import FeaturedContainer from "../components/FeaturedContainer";
 import "./Cart.css";
 
 function Cart() {
-    let [searchParams, setSearchParams] = useSearchParams();
     const { getTotalItems, cartItems, getTotalPrice } = useCart();
     const cartTotalItems = getTotalItems();
     const totalPrice = getTotalPrice();
@@ -41,19 +40,13 @@ function Cart() {
                 }
             );
 
-            console.log("response:", response);
-
             if (!response.ok) {
-                const error = await response.json();
-                console.log("error:", error);
-                throw new Error("Unable to Checkout");
+                throw new Error("Unable to Checkout, Try again another time!");
             }
             const data = await response.json();
-            console.log("mutate", data);
             return data.url;
         },
         onSuccess: (data) => {
-            console.log("success", data);
             window.location.assign(data);
         },
     });

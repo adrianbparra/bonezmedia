@@ -21,7 +21,7 @@ export function CartProvider({ children }) {
             window.localStorage.setItem("cart", JSON.stringify(cartItems));
         }
         if (cartItems.length === 0) {
-            window.localStorage.removeItem("cart")
+            window.localStorage.removeItem("cart");
         }
     }, [cartItems]);
 
@@ -30,6 +30,10 @@ export function CartProvider({ children }) {
             cartItems.find((product) => product.default_price === price_id)
                 ?.quantity || 0
         );
+    }
+
+    function clearCart() {
+        setCartItems([]);
     }
 
     function updateCartQuantity(price_id, quantity) {
@@ -129,6 +133,7 @@ export function CartProvider({ children }) {
     return (
         <CartContext.Provider
             value={{
+                clearCart,
                 getItemQuantity,
                 increaseCartQuantity,
                 decreaseCartQuantity,

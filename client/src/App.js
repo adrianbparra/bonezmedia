@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Container } from "semantic-ui-react";
 
-import {CartProvider} from "./context/cartContext";
+import { CartProvider } from "./context/cartContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -12,6 +12,7 @@ import Installs from "./pages/Installs";
 import Item from "./pages/Item";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ContactUs from "./pages/ContactUs";
+import Order from "./pages/Order";
 
 import "./App.css";
 import Cart from "./pages/Cart";
@@ -42,6 +43,8 @@ function App() {
                         />
 
                         <Route path="/contactus" element={<ContactUs />} />
+
+                        <Route path="/order/:session_id" element={<Order />} />
                     </Routes>
 
                     <Footer />
