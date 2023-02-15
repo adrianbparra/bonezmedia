@@ -13,7 +13,7 @@ import FeaturedContainer from "../components/FeaturedContainer";
 import ItemDefault from "../components/Item.js";
 
 function Shop() {
-    const { isLoading, error, data } = useQuery({
+    const { isLoading, isError, isSuccess, data } = useQuery({
         queryKey: ["products"],
         queryFn: async () => {
             const response = await fetch("http://localhost:4000/products/all", {
@@ -32,7 +32,7 @@ function Shop() {
 
     return (
         <Container as={"main"} className="main">
-            <FeaturedContainer/>
+            <FeaturedContainer />
             <Divider />
             <Container>
                 <Header
@@ -45,14 +45,14 @@ function Shop() {
                 <Grid>
                     <Grid.Row as={Item.Group}>
                         {isLoading && <Loader active inline="centered" />}
-                        {error && (
+                        {isError && (
                             <Grid.Column>
                                 <Header textAlign="center" as="h2">
                                     No Items for Sale
                                 </Header>
                             </Grid.Column>
                         )}
-                        {data &&
+                        {isSuccess &&
                             data.data.map((product) => (
                                 <ItemDefault
                                     key={product.id}
